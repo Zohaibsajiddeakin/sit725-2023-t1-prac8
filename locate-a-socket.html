@@ -28,10 +28,6 @@
   </style>
 </head>
 <body>
-      <!-- Materialize JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <!-- Custom JS -->
-  <script src="app.js"></script>
   <!-- Navbar -->
   <nav>
     <div class="nav-wrapper">
@@ -58,7 +54,7 @@
     <p>Find charging stations conveniently along your route.</p>
     <!-- Search Form -->
     <div class="row">
-      <form class="col  s12">
+      <form id="searchForm" class="col s12">
         <div class="input-field col s12 m6">
           <input id="location" type="text" class="validate">
           <label for="location">Enter Location</label>
@@ -77,8 +73,10 @@
     </div>
   </div>
 
-
-
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JS -->
+  <script src="app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.sidenav');
