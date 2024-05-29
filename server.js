@@ -2,10 +2,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path'); 
+
 
 // Create Express application
 const app = express();
 const PORT = process.env.PORT || 4000;
+app.use(express.static(path.join(__dirname))); // Serve from root directory
+
 
 // CORS middleware
 app.use((req, res, next) => {
@@ -52,7 +56,8 @@ app.get('/search', async (req, res) => {
 // ------------------------- Server Setup -------------------------
 
 // Connect to MongoDB and start server
-mongoose.connect('mongodb://0.0.0.0/locate-a-socket')
+
+mongoose.connect("mongodb://mongodb:27017/locate-a-socket")
   .then(async () => {
     console.log('Connected to MongoDB');
 

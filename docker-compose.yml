@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    build: .  # Use the image built from Dockerfile in current directory
+    ports:
+        - "5000:4000" 
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017/locate-a-socket"
+
+  mongodb:
+    image: mongo  # Use the official mongo image
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongodb
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: mongodb
+
+volumes:
+  mongo-data:
